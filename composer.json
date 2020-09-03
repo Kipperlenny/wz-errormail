@@ -1,0 +1,17 @@
+{
+	"name" : "webzap/wz-errormail",
+	"authors" : [{
+			"name" : "WebZap",
+			"email" : "kontakt@webzap.eu"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Wcustom\\Wzerrormail\\" : "src/wz-errormail/"
+		}
+	},
+	"require" : {
+		"php-curl-class/php-curl-class" : "^8.6",
+		"yahnis-elsts/plugin-update-checker": "^4.10"
+	}
+}
