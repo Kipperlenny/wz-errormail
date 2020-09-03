@@ -40,14 +40,14 @@ class Activator
 	 *
 	 * @since    0.0.1
 	 */
-    public function activate()
+    public static function activate()
 	{
 	    if(!is_dir(WPMU_PLUGIN_DIR)) {
 	        mkdir(WPMU_PLUGIN_DIR);
 	    }
 	    
 	    if(!is_file(WPMU_PLUGIN_DIR . '/mu-wz-errormail.php')) {
-	        copy(WZERRORMAIL_PLUGIN_PATH . '/mu-plugins/mu-wz-errormail.php', WPMU_PLUGIN_DIR . '/mu-wz-errormail.php');
+	        copy(WZERRORMAIL_PLUGIN_PATH . '/src/wz-errormail/files/mu-wz-errormail.php', WPMU_PLUGIN_DIR . '/mu-wz-errormail.php');
 	    }
 	}
 

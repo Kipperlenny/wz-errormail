@@ -59,7 +59,7 @@ class Wcustom
 	public function __construct()
 	{
 		$this->plugin_name = 'wz-errormail';
-		$this->version = '0.0.3';
+		$this->version = '0.0.4';
 	}
 
 	/**

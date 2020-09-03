@@ -16,9 +16,9 @@
  * Plugin Name:       WZerrormail
  * Plugin URI:        *
  * Description:       Ermöglicht das Ändern des Critical Error Mail Receiver
- * Version:           0.0.1
+ * Version:           0.0.4
  * Author:            WebZap
- * Author URI:        *
+ * Author URI:        https://webzap.eu
  * Text Domain:       wz-errormail
  * Domain Path:       /languages
  */
