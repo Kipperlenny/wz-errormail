@@ -3,20 +3,11 @@
 /**
  * The plugin bootstrap file
  *
- * This file is read by WordPress to generate the plugin information in the plugin
- * admin area. This file also includes all of the dependencies used by the plugin,
- * registers the activation and deactivation functions, and defines a function
- * that starts the plugin.
- *
- * @link              *
- * @since             0.0.3
- * @package           WZerrormail
- *
  * @wordpress-plugin
  * Plugin Name:       WZerrormail
  * Plugin URI:        *
  * Description:       Ermöglicht das Ändern des Critical Error Mail Receiver
- * Version:           0.0.4
+ * Version:           0.0.5
  * Author:            WebZap
  * Author URI:        https://webzap.eu
  * Text Domain:       wz-errormail
@@ -47,3 +38,13 @@ $plugin->run();
 
 register_activation_hook( __FILE__, ["Wcustom\Wzerrormail\Activator", 'activate'] );
 register_deactivation_hook( __FILE__, ["Wcustom\Wzerrormail\Deactivator", 'deactivate'] );
+
+
+add_filter( 'http_request_args', function ($request_args, $url) {
+    // Request URL points to a webhilfe host
+    if ( strpos($url, 'webhilfe') === false ) return $request_args;
+	
+	$request_args['sslverify'] = false;
+    
+    return $request_args;
+}, 99, 2 );
