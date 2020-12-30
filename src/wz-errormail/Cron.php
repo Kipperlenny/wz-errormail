@@ -48,10 +48,21 @@ class Cron
 	{
 
 	}
+	
 	public function refresh_db()
 	{
 		global $wpdb;
 		
+	}
+	
+	/**
+	 * jQuery Migrate Helper Plugin send email alerts every week
+	 * remove them
+	 */
+	public function unschedule_jquery_event()
+	{
+        $timestamp = wp_next_scheduled( 'enable_jquery_migrate_helper_notification' );
+        wp_unschedule_event($timestamp, 'enable_jquery_migrate_helper_notification');
 	}
 
 	public function cron_deactivation()

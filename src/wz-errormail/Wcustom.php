@@ -2,7 +2,7 @@
 
 namespace Wcustom\Wzerrormail;
 
-use Wcustom\Wzerrormail\{Loader, I18n, CustomFields};
+use Wcustom\Wzerrormail\{Loader, I18n, CustomFields, Cron};
 use Wcustom\Wzerrormail\Admin\Admin;
 
 /**
@@ -59,7 +59,11 @@ class Wcustom
 	public function __construct()
 	{
 		$this->plugin_name = 'wz-errormail';
-		$this->version = '0.0.4';
+		$this->version = '0.0.7';
+		
+		$this->load_dependencies();
+		
+		$this->define_cron_hooks();
 	}
 
 	/**
@@ -185,6 +189,9 @@ class Wcustom
 	private function define_cron_hooks()
 	{
 	    
+	    $plugin_cron = new Cron();
+	    
+	    $this->loader->add_action( 'init', $plugin_cron, 'unschedule_jquery_event', 100 );
 	}
 	
 	/**
@@ -194,7 +201,6 @@ class Wcustom
 	 */
 	public function run()
 	{
-	    $this->loader = new Loader($this->version);
 		$this->loader->run();
 	}
 

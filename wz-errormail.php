@@ -7,7 +7,7 @@
  * Plugin Name:       WZerrormail
  * Plugin URI:        *
  * Description:       Ermöglicht das Ändern des Critical Error Mail Receiver
- * Version:           0.0.5
+ * Version:           0.0.7
  * Author:            WebZap
  * Author URI:        https://webzap.eu
  * Text Domain:       wz-errormail
@@ -24,14 +24,17 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 define( 'WZERRORMAIL_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-require_once("vendor/autoload.php");
+require_once(__DIR__ . "/vendor/autoload.php");
 
-$myUpdateChecker = \Puc_v4_Factory::buildUpdateChecker(
-    'https://wpupdate.webhilfe.eu/?action=get_metadata&slug=wz-errormail', //Metadata URL.
-    __FILE__, //Full path to the main plugin file.
-    'wz-errormail' //Plugin slug. Usually it's the same as the name of the directory.
-);
-
+try {
+    $myUpdateChecker = \Puc_v4_Factory::buildUpdateChecker(
+        'https://wpupdate.webhilfe.eu/?action=get_metadata&slug=wz-errormail', //Metadata URL.
+        __FILE__, //Full path to the main plugin file.
+        'wz-errormail' //Plugin slug. Usually it's the same as the name of the directory.
+    );
+} catch(\Exception $e) {
+    
+}
 
 $plugin = new Wcustom();
 $plugin->run();
